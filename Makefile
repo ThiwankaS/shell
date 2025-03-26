@@ -15,6 +15,10 @@ LIBFT_LINK = -L$(LIBFT_DIR) -lft
 LIBFT_INC = $(LIBFT_DIR)/libft.h $(LIBFT_DIR)/ft_printf.h $(LIBFT_DIR)/get_next_line.h
 
 SRCS = \
+	srcs/built_in/env/env_handling.c\
+	srcs/built_in/env/env_ll.c\
+	srcs/built_in/env/env_utils.c\
+	srcs/helper.c\
 	srcs/main.c\
 
 OBJS = $(SRCS:.c=.o)
