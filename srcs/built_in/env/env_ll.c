@@ -52,7 +52,7 @@ t_env *add_node(char *env)
 	char *value;
 	t_env *node = create_node();
 	char *sign = ft_strchr(env, '=');
-	if(!node || sign)
+	if(!node || !sign)
 		return (NULL);
 	name = ft_substr(env, 0, (sign - env));
 	if(check_and_free(name, node, NULL))

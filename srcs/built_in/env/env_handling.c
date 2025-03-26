@@ -12,7 +12,7 @@ t_env *list_env(char **envp)
 	{
 		node = add_node(envp[i]);
 		if(!node)
-			return (NULL);
+		return (NULL);
 		ft_env_lstadd_back(&list, node);
 		i++;
 	}

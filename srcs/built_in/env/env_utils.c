@@ -19,7 +19,6 @@ int fill_node(t_env *node, char *name, char *value)
 	if (set_value(node, value))
 	{
 		clean_env(node);
-		free(value);
 		return (1);
 	}
 	return (0);
@@ -45,15 +44,15 @@ static int set_value(t_env *node, char *value)
 	{
 		node->value = ft_strdup(value);
 		if(!node->value)
-			return (0);
-		return (1);
+			return (1);
+		return (0);
 	}
 	else
 	{
-		node->value = ft_strdup("");
+		node->value = ft_strdup(" ");
 		if(!node->value)
-			return (0);
-		return (1);
+			return (1);
+		return (0);
 	}
 	return (0);
 }
