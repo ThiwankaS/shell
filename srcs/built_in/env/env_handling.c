@@ -1,7 +1,8 @@
 #include "../../../includes/minishell.h"
 
 /**
- *
+ *list_env function will create one node storing all the informtin one string holds
+ *in envp add respective node to the list
 */
 t_env *list_env(char **envp)
 {
@@ -14,8 +15,6 @@ t_env *list_env(char **envp)
 		if(!node)
 		return (NULL);
 		ft_env_lstadd_back(&list, node);
-		printf("%s\n", node->name);
-		printf("%s\n", node->value);
 		i++;
 	}
 	return (list);

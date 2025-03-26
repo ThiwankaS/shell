@@ -33,6 +33,7 @@ typedef struct s_env
 typedef struct s_shell
 {
 	t_env *env;
+	int exit_stat;
 } t_shell;
 
 /**
@@ -65,5 +66,15 @@ int fill_node(t_env *node, char *name, char *value);
  * helper fucntions, implementation srcs/utils/cleaners.c
 */
 void mini_cleaner(t_shell *mini);
+
+/**
+ * helper fucntions, implementation srcs/parse/parser.c
+*/
+int parse_and_validate_input(t_shell *mini, char **input);
+
+/**
+ * helper fucntions, implementation srcs/syntax/syntax_checker.c
+*/
+int valid_input_syntax(t_shell *mini,char **input);
 
 #endif

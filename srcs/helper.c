@@ -38,6 +38,7 @@ int init_shell(t_shell *mini, char **envp)
 		ft_putendl_fd("envp creation failed!", 2);
 		return (1);
 	}
+	mini->exit_stat = 0;
 	return (0);
 }
 
@@ -63,7 +64,7 @@ int user_prompt(t_shell *mini, int status)
 				continue;
 		}
 	}
-	status = 0;
+	status = mini->exit_stat;
 	return (status);
 }
 
@@ -77,6 +78,11 @@ static int is_this_empty(char *str)
 static int handle_input(t_shell *mini,char* input)
 {
 	add_history(input);
+	if(parse_and_validate_input(mini, &input))
+	{
+		free(input);
+		return (1);
+	}
 	free(mini);
 	free(input);
 	return(0);
