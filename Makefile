@@ -18,6 +18,7 @@ SRCS = \
 	srcs/built_in/env/env_handling.c\
 	srcs/built_in/env/env_ll.c\
 	srcs/built_in/env/env_utils.c\
+	srcs/utils/cleaners.c\
 	srcs/helper.c\
 	srcs/main.c\
 

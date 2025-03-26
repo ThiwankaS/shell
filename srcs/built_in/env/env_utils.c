@@ -3,10 +3,10 @@
 /**
  * function declarations
 */
+int clean_env(t_env *node);
 int fill_node(t_env *node, char *name, char *value);
 static int set_name(t_env *node, char *name);
 static int set_value(t_env *node, char *value);
-static int clean_env(t_env *node);
 
 int fill_node(t_env *node, char *name, char *value)
 {
@@ -58,7 +58,7 @@ static int set_value(t_env *node, char *value)
 	return (0);
 }
 
-static int clean_env(t_env *node)
+int clean_env(t_env *node)
 {
 	t_env *current;
 	while(node != NULL)

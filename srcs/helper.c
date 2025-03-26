@@ -21,5 +21,11 @@ int activate_shell(int status, char **envp)
 int init_shell(t_shell *mini, char **envp)
 {
 	mini->env = list_env(envp);
-	return (1);
+	if(!mini->env)
+	{
+		mini_cleaner(mini);
+		free(mini);
+		return (1);
+	}
+	return (0);
 }

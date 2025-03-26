@@ -35,21 +35,34 @@ typedef struct s_shell
 } t_shell;
 
 /**
- *helper fucntions to initiate the program, implementaion on helper.c file
+ *helper fucntions to initiate the program, implementaion on srcs/helper.c file
 */
 int activate_shell(int status, char **envp);
 int init_shell(t_shell *mini, char **envp);
 
 /**
  *helper functions to create linked list to store the envp values a s key,pair
- *implementaion on env_ll.c file
+ *implementaion on srcs/built_in/env/env_ll.c file
 */
 t_env *create_node(void);
 t_env *add_node(char *env);
 void ft_env_lstadd_back(t_env **lst, t_env *new);
 
+
+/**
+ * helper fucntions, implementation srcs/built_in/env/env_handling.c
+*/
 t_env *list_env(char **envp);
 
+/**
+ * helper fucntions, implementation srcs/built_in/env/env_utils.c
+*/
+int clean_env(t_env *node);
 int fill_node(t_env *node, char *name, char *value);
+
+/**
+ * helper fucntions, implementation srcs/utils/cleaners.c
+*/
+void mini_cleaner(t_shell *mini);
 
 #endif
