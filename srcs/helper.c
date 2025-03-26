@@ -6,7 +6,7 @@
 int activate_shell(int status, char **envp);
 int init_shell(t_shell *mini, char **envp);
 int user_prompt(t_shell *mini, int status);
-//static int is_this_empty(char *str);
+static int is_this_empty(char *str);
 static int handle_input(t_shell *mini,char* input);
 
 int activate_shell(int status, char **envp)
@@ -52,11 +52,11 @@ int user_prompt(t_shell *mini, int status)
 		input = readline("~minishell~ >");
 		if(input == NULL)
 			break;
-		// if(is_this_empty(input))
-		// {
-		// 	free(input);
-		// 	continue;
-		// }
+		if(is_this_empty(input))
+		{
+			free(input);
+			continue;
+		}
 		if(input && *input)
 		{
 			if(handle_input(mini, input))
@@ -67,21 +67,16 @@ int user_prompt(t_shell *mini, int status)
 	return (status);
 }
 
-// static int is_this_empty(char *str)
-// {
-// 	if(strncmp(" ", str, 1) == 0)
-// 		return (1);
-// 	return (0);
-// }
+static int is_this_empty(char *str)
+{
+	if(strncmp(" ", str, 1) == 0)
+		return (1);
+	return (0);
+}
 
 static int handle_input(t_shell *mini,char* input)
 {
 	add_history(input);
-	// if(parse_and_validate_input(&input, mini))
-	// {
-	// 	free(input);
-	// 	return (1);
-	// }
 	free(mini);
 	free(input);
 	return(0);
