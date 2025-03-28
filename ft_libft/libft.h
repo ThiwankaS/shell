@@ -6,7 +6,7 @@
 /*   By: tsomacha <tsomacha@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/03 11:40:52 by tsomacha          #+#    #+#             */
-/*   Updated: 2024/11/16 16:47:48 by tsomacha         ###   ########.fr       */
+/*   Updated: 2025/03/28 06:24:27 by tsomacha         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,14 @@
 # include <limits.h>
 
 int		ft_atoi(const char *str);
-int		ft_isalpha(long int param);
-int		ft_isdigit(long int param);
-int		ft_isalnum(long int param);
-int		ft_isascii(long int param);
-int		ft_isprint(long int param);
-int		ft_toupper(long int param);
-int		ft_tolower(long int param);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
+int		ft_isascii(int c);
+int		ft_isprint(int c);
+int		ft_isspace(int c);
+int		ft_toupper(int c);
+int		ft_tolower(int c);
 
 char	*ft_itoa(int n);
 char	*ft_strdup(const char *s);
