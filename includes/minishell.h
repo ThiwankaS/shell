@@ -19,8 +19,7 @@
  *envp will split into key,value pairs and will be stored as one key,value pair as a node in a linked
  *list
 */
-typedef struct s_env
-{
+typedef struct s_env {
 	char *name;
 	char *value;
 	struct s_env *next;
@@ -30,8 +29,7 @@ typedef struct s_env
  * main data struture to store shell state
  * envp - pointer to envp data pass from the main program
 */
-typedef struct s_shell
-{
+typedef struct s_shell {
 	t_env *env;
 	int exit_stat;
 } t_shell;
@@ -76,5 +74,16 @@ int parse_and_validate_input(t_shell *mini, char **input);
  * helper fucntions, implementation srcs/syntax/syntax_checker.c
 */
 int valid_input_syntax(t_shell *mini,char **input);
+int check_quotes(char *input, size_t limit);
+
+/**
+ * helper fucntions, implementation srcs/syntax/pipe_syntax.c
+*/
+int check_pipes(t_shell *mini, char **input);
+
+/**
+ * helper fucntions, implementation srcs/parse/cmd_args_utils.c
+*/
+size_t skip_whitespaces(const char *str, size_t i)
 
 #endif

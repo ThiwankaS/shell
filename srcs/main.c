@@ -8,13 +8,11 @@
  * envp - array of strings consist of all the values accessibale through getenv()
  */
 
-int main(int argc, char *argv[], char **envp)
-{
+int main(int argc, char *argv[], char **envp) {
 	int status = 0;
 
 	(void)argv;
-	if(argc != 1)
-	{
+	if(argc != 1) {
 		printf("<no arguments required !>\n");
 		return (EXIT_FAILURE);
 	}

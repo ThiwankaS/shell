@@ -18,7 +18,9 @@ SRCS = \
 	srcs/built_in/env/env_handling.c\
 	srcs/built_in/env/env_ll.c\
 	srcs/built_in/env/env_utils.c\
+	srcs/parse/cmd_args_utils.c\
 	srcs/parse/parser.c\
+	srcs/syntax/pipe_syntax.c\
 	srcs/syntax/syntax_checker.c\
 	srcs/utils/cleaners.c\
 	srcs/helper.c\

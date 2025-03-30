@@ -11,14 +11,12 @@ static int check_and_free(void *ptr, void *ptr1, void *ptr2);
 /**
  *ft_env_lstadd_back will add a new node to the link list ponited by **lst
 */
-void ft_env_lstadd_back(t_env **lst, t_env *new)
-{
+void ft_env_lstadd_back(t_env **lst, t_env *new) {
 	t_env *node;
 
 	if(!lst || !new)
 		return;
-	if(!*lst)
-	{
+	if(!*lst) {
 		*lst = new;
 		return;
 	}
