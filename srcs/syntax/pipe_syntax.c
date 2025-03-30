@@ -51,7 +51,7 @@ int check_pipes(t_shell *mini, char **input)
 */
 static int check_consecutive_pipes(t_shell *mini, char *input)
 {
-	size_t i = 0, pipe_found = 0;
+	size_t i = 0;
 
 	while(input && input[i])
 	{
@@ -59,10 +59,7 @@ static int check_consecutive_pipes(t_shell *mini, char *input)
 		{
 			if(check_pipe_error(mini, input, i))
 				return (1);
-			pipe_found = 1;
 		}
-		else if(ft_isspace(input[i]))
-			pipe_found = 0;
 		i++;
 	}
 	return (0);

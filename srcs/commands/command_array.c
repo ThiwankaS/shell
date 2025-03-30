@@ -1,11 +1,10 @@
 #include "../../includes/minishell.h"
 
 int prepare_command_struct(t_shell *mini, char *input);
+int clean_cmds(t_cmd **cmds);
 static int count_pipes(char *input);
 static int commands_init(t_shell *mini, int count);
 static int initialize_command(t_cmd *cmd);
-static int clean_cmds(t_cmd **cmds);
-
 
 int prepare_command_struct(t_shell *mini, char *input)
 {
@@ -60,6 +59,7 @@ static int initialize_command(t_cmd *cmd)
 	cmd->command = NULL;
 	cmd->path = NULL;
 	cmd->args = NULL;
+	cmd->seg = NULL;
 	cmd->arg_num = 0;
 	cmd->exit = 0;
 	cmd->index = 0;
@@ -68,7 +68,7 @@ static int initialize_command(t_cmd *cmd)
 	return (0);
 }
 
-static int clean_cmds(t_cmd **cmds)
+int clean_cmds(t_cmd **cmds)
 {
 	int i = 0;
 	while(cmds && cmds[i])
@@ -79,6 +79,8 @@ static int clean_cmds(t_cmd **cmds)
 			free(cmds[i]->path);
 		if(cmds[i]->args)
 			free(cmds[i]->args);
+		if(cmds[i]->seg)
+			free(cmds[i]->seg);
 		free(cmds[i]);
 		i++;
 	}

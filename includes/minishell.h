@@ -21,6 +21,7 @@ typedef struct s_cmd
 	char *command;
 	char *path;
 	char **args;
+	char *seg;
 	int  arg_num;
 	int  index;
 	int  fd_in;
@@ -128,4 +129,11 @@ int check_redirects(t_shell *mini,char *input);
  * helper fucntions, implementation srcs/commands/command_array.c
 */
 int prepare_command_struct(t_shell *mini, char *input);
+int clean_cmds(t_cmd **cmds);
+
+/**
+ * helper fucntions, implementation srcs/parse/split_input.c
+*/
+int split_input_by_pipe(t_shell *mini, char *input);
+
 #endif

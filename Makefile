@@ -21,6 +21,7 @@ SRCS = \
 	srcs/commands/command_array.c\
 	srcs/parse/cmd_args_utils.c\
 	srcs/parse/parser.c\
+	srcs/parse/split_input.c\
 	srcs/parse/heredoc.c\
 	srcs/signals/signal_handlers.c\
 	srcs/syntax/pipe_syntax.c\
