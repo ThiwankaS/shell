@@ -20,7 +20,11 @@ SRCS = \
 	srcs/built_in/env/env_utils.c\
 	srcs/parse/cmd_args_utils.c\
 	srcs/parse/parser.c\
+	srcs/parse/heredoc.c\
+	srcs/signals/signal_handlers.c\
 	srcs/syntax/pipe_syntax.c\
+	srcs/syntax/redirect_syntax.c\
+	srcs/syntax/tariling_pipe.c\
 	srcs/syntax/syntax_checker.c\
 	srcs/utils/cleaners.c\
 	srcs/helper.c\

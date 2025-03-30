@@ -7,12 +7,14 @@
 # include <string.h>
 # include <stdbool.h>
 # include <fcntl.h>
+# include <signal.h>
 # include <readline/readline.h>
 # include <readline/history.h>
 # include "../ft_libft/libft.h"
 # include "../ft_libft/ft_printf.h"
 # include "../ft_libft/get_next_line.h"
 
+int g_sig = 0;
 
 /**
  *env node will store the environment variable data in the format of key value pair "SHELL=/bin/bash"
@@ -32,6 +34,7 @@ typedef struct s_env {
 typedef struct s_shell {
 	t_env *env;
 	int exit_stat;
+	int stdin_saved;
 } t_shell;
 
 /**
@@ -74,7 +77,7 @@ int parse_and_validate_input(t_shell *mini, char **input);
  * helper fucntions, implementation srcs/syntax/syntax_checker.c
 */
 int valid_input_syntax(t_shell *mini,char **input);
-int check_quotes(char *input, size_t limit);
+int check_quotes(char *input, int limit);
 
 /**
  * helper fucntions, implementation srcs/syntax/pipe_syntax.c
@@ -84,6 +87,28 @@ int check_pipes(t_shell *mini, char **input);
 /**
  * helper fucntions, implementation srcs/parse/cmd_args_utils.c
 */
-size_t skip_whitespaces(const char *str, size_t i)
+size_t skip_whitespaces(const char *str, size_t i);
 
+/**
+ * helper fucntions, implementation srcs/syntax/tariling_pipe.c
+*/
+char *handle_trailing_pipes(t_shell *mini, char *input);
+
+
+/**
+ * helper fucntions, implementation srcs/signals/signal_handlers.c
+*/
+void sig_init(void);
+void sig_handler_hd(int signal);
+
+/**
+ * helper fucntions, implementation srcs/parse/heredoc.c
+*/
+int restore_and_cleanup(t_shell *mini, int fd, int exit_code);
+
+
+/**
+ * helper fucntions, implementation srcs/syntax/redirect_syntax.c
+*/
+int check_redirects(t_shell *mini,char *input);
 #endif

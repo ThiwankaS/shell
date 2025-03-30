@@ -8,14 +8,21 @@
  * envp - array of strings consist of all the values accessibale through getenv()
  */
 
-int main(int argc, char *argv[], char **envp) {
+//volatile sig_atomic_t g_sig = 0;
+
+int main(int argc, char *argv[], char **envp)
+{
 	int status = 0;
 
 	(void)argv;
-	if(argc != 1) {
+	if(argc != 1)
+	{
 		printf("<no arguments required !>\n");
 		return (EXIT_FAILURE);
 	}
 	activate_shell(status, envp);
 	return (EXIT_SUCCESS);
 }
+
+
+
