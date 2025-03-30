@@ -16,6 +16,18 @@
 
 int g_sig = 0;
 
+typedef struct s_cmd
+{
+	char *command;
+	char *path;
+	char **args;
+	int  arg_num;
+	int  index;
+	int  fd_in;
+	int  fd_out;
+	int  exit;
+} t_cmd;
+
 /**
  *env node will store the environment variable data in the format of key value pair "SHELL=/bin/bash"
  *envp will split into key,value pairs and will be stored as one key,value pair as a node in a linked
@@ -35,6 +47,8 @@ typedef struct s_shell {
 	t_env *env;
 	int exit_stat;
 	int stdin_saved;
+	int command_count;
+	t_cmd **cmds;
 } t_shell;
 
 /**
@@ -94,7 +108,6 @@ size_t skip_whitespaces(const char *str, size_t i);
 */
 char *handle_trailing_pipes(t_shell *mini, char *input);
 
-
 /**
  * helper fucntions, implementation srcs/signals/signal_handlers.c
 */
@@ -106,9 +119,13 @@ void sig_handler_hd(int signal);
 */
 int restore_and_cleanup(t_shell *mini, int fd, int exit_code);
 
-
 /**
  * helper fucntions, implementation srcs/syntax/redirect_syntax.c
 */
 int check_redirects(t_shell *mini,char *input);
+
+/**
+ * helper fucntions, implementation srcs/commands/command_array.c
+*/
+int prepare_command_struct(t_shell *mini, char *input);
 #endif

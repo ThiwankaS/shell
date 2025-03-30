@@ -18,6 +18,7 @@ SRCS = \
 	srcs/built_in/env/env_handling.c\
 	srcs/built_in/env/env_ll.c\
 	srcs/built_in/env/env_utils.c\
+	srcs/commands/command_array.c\
 	srcs/parse/cmd_args_utils.c\
 	srcs/parse/parser.c\
 	srcs/parse/heredoc.c\
