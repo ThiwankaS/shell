@@ -40,8 +40,16 @@ static int check_special_character(char *input)
 		c = special_chars[i];
 		if(ft_strchr(input, c))
 		{
-			if(!ft_strchr(str, c))
-				return (1);
+			if(ft_strchr(str, c))
+			{
+				if(ft_strncmp(str, input, ft_strlen(str)) == 0)
+				{
+					free(str);
+					return (1);
+				}
+				free(str);
+				return (0);
+			}
 		}
 		i++;
 	}

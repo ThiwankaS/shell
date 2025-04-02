@@ -1,8 +1,5 @@
-#include "../includes/minishell.h"
+#include "includes/minishell.h"
 
-/**
- * funtion declaration
-*/
 int activate_shell(int status, char **envp);
 int init_shell(t_shell *mini, char **envp);
 int user_prompt(t_shell *mini, int status);
@@ -87,3 +84,45 @@ static int handle_input(t_shell *mini,char* input)
 	free(input);
 	return(0);
 }
+
+static char *in_single_quotes(char *input)
+{
+	int start = 0, end = 0, len = 0;
+	char *str = NULL;
+	str = ft_strchr(input, '\'');
+	if(!str)
+		return (NULL);
+	start = str - input;
+	str = ft_strrchr(input, '\'');
+	if(!str)
+		return (NULL);
+	end = str - input;
+	len = end - start + 1;
+	str = malloc(sizeof(char) * len);
+	if(!str)
+		return (NULL);
+	ft_strlcpy(str, &input[start], (end - start + 2));
+	return (str);
+}
+
+char *in_doubel_quotes(char *input)
+{
+	int start = 0, end = 0, len = 0;
+	char *str = NULL;
+
+	str = ft_strchr(input, '"');
+	if(!str)
+		return (NULL);
+	start = str - input;
+	str = ft_strrchr(input, '"');
+	if(!str)
+		return (NULL);
+	end = str - input;
+	len = end - start + 1;
+	str = malloc(sizeof(char) * len);
+	if(!str)
+		return (NULL);
+	ft_strlcpy(str, &input[start], (end - start + 2));
+	return (str);
+}
+
