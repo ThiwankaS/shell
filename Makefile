@@ -15,6 +15,10 @@ LIBFT_LINK = -L$(LIBFT_DIR) -lft
 LIBFT_INC = $(LIBFT_DIR)/libft.h $(LIBFT_DIR)/ft_printf.h $(LIBFT_DIR)/get_next_line.h
 
 SRCS = \
+	srcs/parse/parser.c\
+	srcs/tokenize/token_list.c\
+	srcs/tokenize/token_extract.c\
+	srcs/helper.c\
 	srcs/validate/surround.c\
 	srcs/error/syntax_error.c\
 	main.c\
@@ -26,7 +30,6 @@ SRCS = \
 	# srcs/parse/cmd_args_utils.c\
 	# srcs/parse/expand.c\
 	# srcs/parse/parse_input.c\
-	# srcs/parse/parser.c\
 	# srcs/parse/split_input.c\
 	# srcs/parse/heredoc.c\
 	# srcs/signals/signal_handlers.c\
