@@ -32,23 +32,22 @@ static int check_properly_enclosed(char *input)
 static int check_special_character(char *input)
 {
 	int i = 0;
-	char *special_chars = "\\&;,{()}", *str, c;
+	char *special_chars = "\\&;,{()}", *str;
 
 	str = in_quotes(input);
 	while(special_chars[i])
 	{
-		c = special_chars[i];
-		if(ft_strchr(input, c))
+		if(ft_strchr(input, special_chars[i]))
 		{
-			if(ft_strchr(str, c))
+			if(ft_strchr(str, special_chars[i]))
 			{
-				if(ft_strncmp(str, input, ft_strlen(str)) == 0)
+				if(ft_strncmp(str, input, ft_strlen(str)) != 0)
 				{
 					free(str);
-					return (1);
+					return (0);
 				}
 				free(str);
-				return (0);
+				return (1);
 			}
 		}
 		i++;
