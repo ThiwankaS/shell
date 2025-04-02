@@ -39,16 +39,13 @@ static int check_special_character(char *input)
 	{
 		if(ft_strchr(input, special_chars[i]))
 		{
-			if(ft_strchr(str, special_chars[i]))
+			if(str && ft_strchr(str, special_chars[i]))
 			{
-				if(ft_strncmp(str, input, ft_strlen(str)) != 0)
-				{
-					free(str);
-					return (0);
-				}
 				free(str);
-				return (1);
+				return (0);
 			}
+			free(str);
+			return (1);
 		}
 		i++;
 	}
@@ -68,7 +65,7 @@ char *in_quotes(char *input)
 		i++;
 	}
 	if(!str)
-		return (input);
+		return (NULL);
 	start = str - input;
 	i = ft_strlen(input) - 1;
 	while(input && input[i])
@@ -78,7 +75,7 @@ char *in_quotes(char *input)
 		i--;
 	}
 	if(!str)
-		return (input);
+		return (NULL);
 	end = str - input;
 	len = end - start + 1;
 	str = malloc(sizeof(char) * len);
